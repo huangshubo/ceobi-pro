@@ -3,6 +3,7 @@ package io.broker.api.client.domain.account;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.broker.api.client.constant.BrokerConstants;
+import io.broker.api.client.domain.general.FeeInfo;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -51,6 +52,10 @@ public class Trade {
     private boolean maker;
 
     private String orderId;
+
+    private String matchOrderId;
+
+    private FeeInfo fee;
 
     public Long getId() {
         return id;
@@ -134,6 +139,22 @@ public class Trade {
         this.orderId = orderId;
     }
 
+    public String getMatchOrderId() {
+        return matchOrderId;
+    }
+
+    public void setMatchOrderId(String matchOrderId) {
+        this.matchOrderId = matchOrderId;
+    }
+
+    public FeeInfo getFee() {
+        return fee;
+    }
+
+    public void setFee(FeeInfo fee) {
+        this.fee = fee;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this, BrokerConstants.TO_STRING_BUILDER_STYLE)
@@ -147,6 +168,8 @@ public class Trade {
                 .append("buyer", buyer)
                 .append("maker", maker)
                 .append("orderId", orderId)
+                .append("matchOrderId", matchOrderId)
+                .append("fee", fee)
                 .toString();
     }
 }
